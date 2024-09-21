@@ -13,7 +13,7 @@ RELEASE="$(rpm -E %fedora)"
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-flatpak -y install com.valvesoftware.Steam com.google.Chrome
+#flatpak -y install com.valvesoftware.Steam com.google.Chrome
 
 rpm-ostree install tmux steam vlc
 
