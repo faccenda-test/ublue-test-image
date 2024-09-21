@@ -15,6 +15,6 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 
 #flatpak -y install com.valvesoftware.Steam com.google.Chrome
 
-rpm-ostree install tmux steam vlc
+rpm-ostree install tmux vlc
 
 systemctl enable podman.socket
