@@ -11,10 +11,10 @@ RELEASE="$(rpm -E %fedora)"
 # List of rpmfusion packages can be found here:
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
-rpm-ostree install tmux steam vlc
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-dnf -y install fedora-workstation-repositories
-dnf -y config-manager --set-enabled google-chrome
-dnf -y install google-chrome-stable
+flatpak -y install com.valvesoftware.Steam com.google.Chrome
+
+rpm-ostree install tmux steam vlc
 
 systemctl enable podman.socket
