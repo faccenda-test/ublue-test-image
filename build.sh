@@ -18,7 +18,7 @@ mv /tmp/1password.repo /etc/yum.repos.d/1password.repo
 
 rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
 
-rpm-ostree install tmux vlc 1password google-chrome-stable steam
+rpm-ostree install tmux vlc 1password
 
 systemctl enable podman.socket
 
