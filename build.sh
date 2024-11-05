@@ -13,12 +13,12 @@ RELEASE="$(rpm -E %fedora)"
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-#flatpak -y install com.valvesoftware.Steam com.google.Chrome
-
-rpm-ostree install tmux vlc
-
+curl -Lo /etc/pki/rpm-gpg/1password.asc /https://downloads.1password.com/linux/keys/1password.asc
 mv /tmp/1password.repo /etc/yum.repos.d/1password.repo
-rpm-ostree install 1password
+
+rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
+
+rpm-ostree install tmux vlc google-chrome-stable 1password steam
 
 systemctl enable podman.socket
 
