@@ -17,7 +17,7 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 
 rpm-ostree install tmux vlc
 
-mv 1password.repo /etc/yum.repos.d/1password.repo
+mv /tmp/1password.repo /etc/yum.repos.d/1password.repo
 rpm-ostree install 1password
 
 systemctl enable podman.socket
