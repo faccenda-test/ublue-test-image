@@ -14,10 +14,6 @@ RELEASE="$(rpm -E %fedora)"
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 curl -Lo /etc/pki/rpm-gpg/1password.asc https://downloads.1password.com/linux/keys/1password.asc
-
-curl -Lo /etc/pki/rpm-gpg/google.asc https://dl.google.com/linux/linux_signing_key.pub
-
-
 cat > /etc/yum.repos.d/1password.repo << EOF
 [1password]
 name=1Password Stable Channel
@@ -28,11 +24,19 @@ repo_gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/1password.asc
 EOF
 
-curl -Lo /tmp/google-chrome-stable.rpm https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+curl -Lo /etc/pki/rpm-gpg/google.asc https://dl.google.com/linux/linux_signing_key.pub
+cat > /etc/yum.repos.d/google-chrome.repo << EOF
+[google-chrome]
+name=google-chrome
+baseurl=http://dl.google.com/linux/chrome/rpm/stable/\$basearch
+enabled=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/google.asc
+EOF
 
 rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
 
-rpm-ostree install tmux /tmp/google-chrome-stable.rpm
+rpm-ostree install tmux google-chrome-stable
 rpm-ostree status
 rpm-ostree upgrade
 
