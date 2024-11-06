@@ -15,6 +15,9 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 
 curl -Lo /etc/pki/rpm-gpg/1password.asc https://downloads.1password.com/linux/keys/1password.asc
 
+curl -Lo /etc/pki/rpm-gpg/google.asc https://dl.google.com/linux/linux_signing_key.pub
+
+
 cat > /etc/yum.repos.d/1password.repo << EOF
 [1password]
 name=1Password Stable Channel
