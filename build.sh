@@ -16,6 +16,8 @@ mkdir -p /var/opt
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 curl -Lo /etc/pki/rpm-gpg/1password.asc https://downloads.1password.com/linux/keys/1password.asc
+rpm --import /etc/pki/rpm-gpg/1password.asc
+
 cat > /etc/yum.repos.d/1password.repo << EOF
 [1password]
 name=1Password Stable Channel
@@ -27,6 +29,7 @@ gpgkey=file:///etc/pki/rpm-gpg/1password.asc
 EOF
 
 curl -Lo /etc/pki/rpm-gpg/google.asc https://dl.google.com/linux/linux_signing_key.pub
+rpm --import /etc/pki/rpm-gpg/google.asc
 cat > /etc/yum.repos.d/google-chrome.repo << EOF
 [google-chrome]
 name=google-chrome
@@ -41,7 +44,6 @@ rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-rele
 rpm-ostree install tmux google-chrome-stable 1password
 rpm-ostree status
 rpm-ostree upgrade
-
 
 systemctl enable podman.socket
 
