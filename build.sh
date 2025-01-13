@@ -42,8 +42,6 @@ EOF
 rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
 
 rpm-ostree install tmux google-chrome-stable 1password
-rpm-ostree status
-rpm-ostree upgrade
 
 systemctl enable podman.socket
 
