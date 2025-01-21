@@ -30,6 +30,7 @@ EOF
 
 curl -Lo /etc/pki/rpm-gpg/google.asc https://dl.google.com/linux/linux_signing_key.pub
 rpm --import /etc/pki/rpm-gpg/google.asc
+
 cat > /etc/yum.repos.d/google-chrome.repo << EOF
 [google-chrome]
 name=google-chrome
@@ -39,7 +40,8 @@ gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/google.asc
 EOF
 
-rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
+rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
+  https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
 
 rpm-ostree install tmux google-chrome-stable 1password
 
